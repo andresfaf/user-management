@@ -1,0 +1,91 @@
+﻿@{
+	ViewData["Title"] = "Usuario consulta/gestiona";
+}
+
+@model List<UserViewModel>
+
+<div class="container card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 80%">
+	@{
+		if (TempData["Success"] is not null)
+		{
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>@TempData["Success"]</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		}
+		if (TempData["Error"] is not null)
+		{
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>@TempData["Error"]</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		}
+	}
+	<h3 class="text-center mt-2 mb-0">Gestión de usuarios</h3>
+	<hr />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th class="text-center">Fecha nacimiento</th>
+				<th class="text-center">Genero</th>
+				<th class="text-center">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				foreach (var user in @Model)
+				{
+					<tr>
+						<td>@user.Name</td>
+						<td class="text-center">@user.BirthDate</td>
+						<td class="text-center">
+							@(user.Gender == "M" ? "Masculino" : user.Gender == "F" ? "Femenino" : "Otro")
+						</td>
+						<td>
+							<div class="d-flex justify-content-center gap-2 text-center">
+								<form method="post" asp-controller="User" asp-action="Index">
+									<input type="hidden" name="Id" value="@user.Id" />
+									<input type="hidden" name="Name" value="@user.Name" />
+									<input type="hidden" name="BirthDate" value="@user.BirthDate" />
+									<input type="hidden" name="Gender" value="@user.Gender" />
+									<input type="hidden" name="EnabledUpdate" value="false" />
+									<button type="submit" class="btn btn-success">Actualizar</button>
+								</form>
+
+								<button class="btn btn-danger" onclick="confirmDelete(@user.Id)">
+									Eliminar
+								</button>
+							</div>
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>
+
+<div id="idModalConfirmDelete"></div>
+
+
+<script>
+	async function confirmDelete(id){
+		const container = document.getElementById("idModalConfirmDelete")
+		const baseUrl = '@Url.Action("ConfirmDelete", "User")';
+		const url = `${baseUrl}?id=${id}`;
+		try {
+			const response = await fetch(url);
+
+			if (!response.ok) {
+				throw new Error("Error al cargar confirmación de eliminación");
+			}
+
+			container.innerHTML = await response.text();
+			var modal = new bootstrap.Modal(document.getElementById('modalConfirmDelete'));
+			modal.show();
+		} catch (e) {
+			console.error("Error cargando el modal", e);
+		}
+	}
+</script>
+

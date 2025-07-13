@@ -1,0 +1,57 @@
+﻿@{
+	ViewData["Title"] = "Usuario";
+}
+
+@model UserViewModel
+
+<div class="container card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 30%">
+	@{
+		if (TempData["Success"] is not null)
+		{
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>@TempData["Success"]</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		}
+		if (TempData["Error"] is not null)
+		{
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>@TempData["Error"]</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		}
+	}
+	<h3 class="text-center mt-2 mb-0">Usuario</h3>
+	<hr />
+	<form method="post">
+		<div class="my-3">
+			<label class="form-label">Nombre</label>
+			<input type="text" class="form-control" placeholder="Ingrese nombre" asp-for="@Model.Name" required>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Fecha de nacimiento</label>
+			@if (Model != null)
+			{
+				<input type="date" class="form-control" placeholder="Ingrese fecha de cumpleaños" name="BirthDate" value="@Model.BirthDate.ToString("yyyy-MM-dd")" max="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+				<input type="hidden" name="Id" value="@Model.Id" />
+				<input type="hidden" name="EnabledUpdate" value="true" />
+			}
+			else
+			{
+				<input type="date" class="form-control" asp-for="@Model.BirthDate" max="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+			}
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Género</label>
+			<select class="form-select" aria-label="Selecciones" asp-for="@Model.Gender" required>
+				<option selected>Seleccione genero</option>
+				<option value="M">Masculino</option>
+				<option value="F">Femenino</option>
+				<option value="O">otro</option>
+			</select>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-primary btn-lg" style="width: 100%">Enviar</button>
+		</div>
+	</form>
+</div>
