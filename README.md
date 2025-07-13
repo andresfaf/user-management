@@ -1,9 +1,9 @@
 # User Management - Prueba Técnica
 
-<!--<img src="UserManagement/UserManagement.Web/wwwroot/Images/Pantalla%20usuario.png" alt="Vista previa" width="1000"/>
+<img src="UserManagement/UserManagement.Web/wwwroot/Images/Pantalla%20usuario.png" alt="Vista previa" width="1000"/>
 <img src="UserManagement/UserManagement.Web/wwwroot/Images/Pantalla%20gestion%20usuario.png" alt="Vista previa" width="1000"/>
 <img src="UserManagement/UserManagement.Web/wwwroot/Images/Modal%20confirmacion%20eliminación.png" alt="Vista previa" width="1000"/>
-<img src="UserManagement/UserManagement.Web/wwwroot/Images/Confirmacion%20de%20eliminación.png" alt="Vista previa" width="1000"/>-->
+<img src="UserManagement/UserManagement.Web/wwwroot/Images/Confirmacion%20de%20eliminación.png" alt="Vista previa" width="1000"/>
 
 Este proyecto implementa un sistema de gestión de usuarios (CRUD) siguiendo una arquitectura en capas (Capa de presentación, Capa de negocio - API, Capa de datos) utilizando ASP.NET MVC, Web API y Entity Framework Core para acceder a procedimientos almacenados de la base de datos.
 
