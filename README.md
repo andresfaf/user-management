@@ -96,8 +96,3 @@ builder.Services.AddHttpClient<IUserHttpService, UserHttpService>(client =>
 6. Seleccionar en elemento de inicio el nuevo perfil de inicio (Esta al lado de botón iniciar)
 
 7. ✅ OK para ejecutar el proyecto.
-
-## 🙋 Autor
-- **Andrés Acosta**  
-  [LinkedIn](www.linkedin.com/in/andres-felipe-acosta-fuertes) | [GitHub](https://github.com/andresfaf) | Correo: acostafuertesaf@gmail.com
- 
