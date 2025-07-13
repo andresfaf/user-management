@@ -7,6 +7,8 @@
 
 Este proyecto implementa un sistema de gestión de usuarios (CRUD) siguiendo una arquitectura en capas (Capa de presentación, Capa de negocio - API, Capa de datos) utilizando ASP.NET MVC, Web API y Entity Framework Core para acceder a procedimientos almacenados de la base de datos.
 
+Cabe recalcar que hubo algo que me parecio confuso del enunciado de la prueba ya que tenia duda si era un sp el cual tuviera todas las operaciones del CRUD o si era un sp por cada operación: "Debe crear un procedimiento almacenado donde haga el proceso CRUD para la tabla creada anteriormente Por favor hacer esta prueba en .NET", he optado por realizar la segunda, un sp por cada operación ya que me parecio una forma mas limpia de hacer las cosas.
+
 ## 🚀 Tecnologías usadas
 - .NET 8
 - ASP.NET Core MVC
